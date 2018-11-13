@@ -14,6 +14,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        EditText edUserid =findViewById(R.id.userid);
+        String u =getSharedPreferences("atm",MODE_PRIVATE)
+                .getString("USERID","");
+        edUserid.setText(u);
     }
     public void login(View view){
         EditText edUserid = findViewById(R.id.userid);
@@ -22,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
         String p =edPassword.getText().toString();
         if(u.equals("Judy")&&p.equals("1234")){
                 Toast.makeText(this, "成功", Toast.LENGTH_LONG).show();
+                getSharedPreferences("Atm",MODE_PRIVATE).edit()
+                        .putString("Userid",u)
+                        .apply();
                 setResult(RESULT_OK);
                 finish();
 
