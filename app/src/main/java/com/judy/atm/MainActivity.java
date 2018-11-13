@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RC_LOGIN) { //登入成功後,收到的RC_LOGIN碼是正確的
             if (resultCode != RESULT_OK) {//沒有登入,只是按返回鍵,就會直接結束
                 finish();
+            } else {
+                Intent intent = new Intent(this, NicknameActivity.class);
+                startActivity(intent);
             }
         }
     }

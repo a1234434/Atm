@@ -17,8 +17,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivityPractice" android:exported="true" />
-        <activity android:name=".LoginActivityPractice" android:exported="true" ></activity>
+        <activity
+            android:name=".MainActivityPractice"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivityPractice"
+            android:exported="true" />
+        <activity android:name=".NicknameActivity" />
+        <activity android:name=".AgeActivity" />
+        <activity android:name=".GenderActivity"></activity>
     </application>
 
 </manifest>
