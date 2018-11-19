@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode != RESULT_OK) {//沒有登入,只是按返回鍵,就會直接結束
                 finish();
             } else {
-                Intent intent = new Intent(this, NicknameActivity.class);
-                startActivity(intent);
+                Intent nickname = new Intent(this, NicknameActivity.class);
+                startActivity(nickname);
             }
         }
     }
