@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 
     private static final int RC_LOGIN = 100;
@@ -33,8 +33,19 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode != RESULT_OK) {//沒有登入,只是按返回鍵,就會直接結束
                 finish();
             } else {
-                Intent nickname = new Intent(this, NicknameActivity.class);
-                startActivity(nickname);
+                logon = true;
+//                String nickname = getSharedPreferences("user", MODE_PRIVATE).getString("nickname", null);
+//                int age = getSharedPreferences("user", MODE_PRIVATE).getInt("age", 0);
+//                int gender = getSharedPreferences("user", MODE_PRIVATE).getInt("gender", 0);
+//
+//                if (nickname == null || age == 0 || gender == 0) {
+//                    Intent nickname1 = new Intent(this, NicknameActivity.class);
+//                    startActivity(nickname1);
+//                }
+                if(user.isVaild()){
+                    Intent nickname1 = new Intent(this, NicknameActivity.class);
+                    startActivity(nickname1);
+                }
             }
         }
     }
