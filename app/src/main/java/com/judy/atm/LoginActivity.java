@@ -15,7 +15,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         EditText edUserid =findViewById(R.id.userid);
-        String u =getSharedPreferences("atm",MODE_PRIVATE)
+        String u =getSharedPreferences("Atm",MODE_PRIVATE)
                 .getString("USERID","");
         edUserid.setText(u);
     }
@@ -27,7 +27,7 @@ public class LoginActivity extends BaseActivity {
         if(u.equals("Judy")&&p.equals("1234")){
                 Toast.makeText(this, "成功", Toast.LENGTH_LONG).show();
                 getSharedPreferences("Atm",MODE_PRIVATE).edit()
-                        .putString("Userid",u)
+                        .putString("USERID",u)
                         .apply();
                 setResult(RESULT_OK);
                 finish();
