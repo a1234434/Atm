@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
 
 
-    private static final int RC_LOGIN = 100;
+    private static final int RC_LOGIN = 70;
     boolean logon = false;
     List<String> fruits = Arrays.asList("香蕉","鳳梨","芭樂");
     @Override
@@ -36,6 +37,11 @@ public class MainActivity extends BaseActivity {
 
         //listView
 //        listView();
+        //RecyclervCView
+        RecyclerView rv =findViewById(R.id.recycler);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(new FruitAdapter());
 
     }
 
@@ -45,32 +51,33 @@ public class MainActivity extends BaseActivity {
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
     }
-    class FruitAdapter extends RecyclerView.Adapter<>{
+    class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHolder> {
 
         @NonNull
         @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public FruitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(android.R.layout.simple_list_item_1,parent,false);
+                    .inflate(android.R.layout.simple_list_item_1, parent, false);
             return new FruitViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+            holder.nameText.setText(fruits.get(position));
         }
 
         @Override
         public int getItemCount() {
-            return 0;
+            return fruits.size();
         }
-    }
 
-    class FruitViewHolder extends RecyclerView.ViewHolder{
-        TextView nameText;
-        public FruitViewHolder(View itemView){
-            super(itemView);
+        class FruitViewHolder extends RecyclerView.ViewHolder {
+            TextView nameText;
 
+            public FruitViewHolder(View itemView) {
+                super(itemView);
+                nameText = itemView.findViewById(R.id.text1);
+            }
         }
     }
     @Override

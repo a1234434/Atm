@@ -25,7 +25,7 @@
             android:exported="true" />
         <activity android:name=".NicknameActivity" />
         <activity android:name=".AgeActivity" />
-        <activity android:name=".GenderActivity"></activity>
+        <activity android:name=".GenderActivity" />
     </application>
 
 </manifest>
