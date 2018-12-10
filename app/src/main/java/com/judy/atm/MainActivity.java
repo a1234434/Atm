@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull FruitViewHolder holder, int position) {
             holder.nameText.setText(fruits.get(position));
         }
 
@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivity {
 //                    Intent nickname1 = new Intent(this, NicknameActivity.class);
 //                    startActivity(nickname1);
 //                }
-                if(user.isVaild()){
+                if(!user.isVaild()){
                     Intent nickname1 = new Intent(this, NicknameActivity.class);
                     startActivity(nickname1);
                 }
