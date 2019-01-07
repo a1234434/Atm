@@ -22,6 +22,9 @@ public class Login2Activity extends AppCompatActivity {
         //Refactor-Extract-method
         userid = findViewById(R.id.ed_id);
         password = findViewById(R.id.ed_pass);
+        String ui = userid.getText().toString();
+        ui=getSharedPreferences("ATM",MODE_PRIVATE).getString("userid","");
+        userid.setText(ui);
 
     }
 
@@ -30,6 +33,8 @@ public class Login2Activity extends AppCompatActivity {
         String ps= password.getText().toString();
         if(ui.equals("Judy")&&ps.equals("1234")){
             Toast.makeText(this,"登入成功",Toast.LENGTH_LONG).show();
+            getSharedPreferences("ATM",MODE_PRIVATE).edit().
+                    putString("userid",ui).apply();
             setResult(RESULT_OK);
             finish();
 
@@ -43,6 +48,7 @@ public class Login2Activity extends AppCompatActivity {
                             password.setText("");
                         }
                     }).show();
+
         }
 
     }

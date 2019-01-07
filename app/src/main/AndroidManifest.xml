@@ -26,13 +26,18 @@
         <activity android:name=".NicknameActivity" />
         <activity android:name=".AgeActivity" />
         <activity android:name=".GenderActivity" />
-        <!--<activity-->
-            <!--android:theme="@style/AppTheme.NoActionBar"-->
-            <!--android:name="" />-->
-        <activity android:name=".Main2Activity"
+        <!-- <activity -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" -->
+        <!-- android:name="" /> -->
+        <activity
+            android:name=".Main2Activity"
             android:exported="true" />
-        <activity android:name=".Login2Activity"
-            android:exported="true" ></activity>
+        <activity
+            android:name=".Login2Activity"
+            android:exported="true" />
+        <activity android:name=".Nickname2Activity" />
+        <activity android:name=".Age2Activity" />
+        <activity android:name=".Gender2Activity"></activity>
     </application>
 
 </manifest>

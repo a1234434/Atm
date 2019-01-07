@@ -26,6 +26,9 @@ public class Main2Activity extends AppCompatActivity {
         if(requestCode==RC_login){
             if(resultCode!=RESULT_OK){
                 finish();
+            }else{
+                Intent intent = new Intent(this,Nickname2Activity.class);
+                startActivity(intent);
             }
         }
     }
