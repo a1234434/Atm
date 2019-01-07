@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,41 +30,49 @@ public class Main2Activity extends Base2Activity {
             Intent intent = new Intent(this, Login2Activity.class);
             startActivityForResult(intent,RC_login);
 
+            //RecyclerView
+            RecyclerView recyclerView =findViewById(R.id.rec);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(new FruitAdapter());
+
         }
     }
 //listView
     private void listView(){
         ArrayAdapter<String> adapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,fruits);
-        ListView listView = findViewById(R.id.ed_list);
+        ListView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
     }
-//
-//    class Fruitadapter extends RecyclerView.Adapter<>{
-//
-//        @NonNull
-//        @Override
-//        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//            View view =LayoutInflater.from(parent.getContext()).
-//                    inflate(android.R.layout.simple_list_item_1,parent,false);
-//            return new FruitViewHolder(view);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-//
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return 0;
-//        }
-//    }
-//    class FruitViewHolder extends RecyclerView.ViewHolder{
-//    TextView nameText;
-//    public FruitViewHolder(View itemview){
-//        super(itemView);
-//    }
-//    }
+    class FruitAdapter extends RecyclerView.Adapter<FruitViewHolder>{
+
+        @NonNull
+        @Override
+        public FruitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view =LayoutInflater.from(parent.getContext()).
+                 inflate(android.R.layout.simple_list_item_1,parent,false);
+          return new FruitViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull FruitViewHolder fruitholder, int poistion) {
+          fruitholder.nameText2.setText(fruits.get(poistion));
+        }
+
+        @Override
+        public int getItemCount() {
+            return fruits.size();
+        }
+    }
+
+    class FruitViewHolder extends RecyclerView.ViewHolder {
+        TextView nameText2;
+    public FruitViewHolder(@NonNull View itemView) {
+        super(itemView);
+        nameText2=itemView.findViewById(R.id.text1);
+    }
+}
+
     // ctrl+o
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -73,7 +82,7 @@ public class Main2Activity extends Base2Activity {
                 finish();
             }else{
                 login=true;
-                if(user2.isVailed()) {
+                if(!user2.isVailed()) {
                     Intent intent = new Intent(this, Nickname2Activity.class);
                     startActivity(intent);
                 }
