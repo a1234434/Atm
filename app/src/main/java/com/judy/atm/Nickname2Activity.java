@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class Nickname2Activity extends AppCompatActivity {
+public class Nickname2Activity extends Base2Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +18,9 @@ public class Nickname2Activity extends AppCompatActivity {
     public void next(View view){
         EditText nick=findViewById(R.id.ed_nick);
         String nic=nick.getText().toString();
-        getSharedPreferences("user",MODE_PRIVATE).edit().
-                putString("nickname",nic).apply();
+//        getSharedPreferences("user",MODE_PRIVATE).edit().
+//                putString("nickname",nic).apply();
+        user2.setNickname(nic);
             Intent intent = new Intent(this, Age2Activity.class);
             startActivity(intent);
 

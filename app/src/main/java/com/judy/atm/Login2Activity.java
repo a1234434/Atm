@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Login2Activity extends AppCompatActivity {
+public class Login2Activity extends Base2Activity {
 
 
     private EditText password;

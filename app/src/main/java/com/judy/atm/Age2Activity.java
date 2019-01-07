@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class Age2Activity extends AppCompatActivity {
+public class Age2Activity extends Base2Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +17,9 @@ public class Age2Activity extends AppCompatActivity {
     public void next(View view){
         EditText agee=findViewById(R.id.ed_ag);
         int ageee =Integer.parseInt(agee.getText().toString());
-        getSharedPreferences("user",MODE_PRIVATE).edit().
-                putInt("age",ageee).apply();
+//        getSharedPreferences("user",MODE_PRIVATE).edit().
+//                putInt("age",ageee).apply();
+        user2.setAge(ageee);
         Intent intent1 =new Intent(this,Gender2Activity.class);
         startActivity(intent1);
     }

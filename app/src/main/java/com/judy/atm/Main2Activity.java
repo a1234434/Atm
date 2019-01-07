@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends Base2Activity {
     boolean login = false;
     public static final int RC_login =50;
     @Override
@@ -27,8 +27,11 @@ public class Main2Activity extends AppCompatActivity {
             if(resultCode!=RESULT_OK){
                 finish();
             }else{
-                Intent intent = new Intent(this,Nickname2Activity.class);
-                startActivity(intent);
+                login=true;
+                if(user2.isVailed()) {
+                    Intent intent = new Intent(this, Nickname2Activity.class);
+                    startActivity(intent);
+                }
             }
         }
     }
