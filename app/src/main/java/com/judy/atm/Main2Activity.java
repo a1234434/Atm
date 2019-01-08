@@ -34,7 +34,7 @@ public class Main2Activity extends Base2Activity {
             RecyclerView recyclerView =findViewById(R.id.rec);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(new FruitAdapter());
+//            recyclerView.setAdapter(new FruitAdapter());
 
         }
     }
@@ -44,34 +44,34 @@ public class Main2Activity extends Base2Activity {
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
     }
-    class FruitAdapter extends RecyclerView.Adapter<FruitViewHolder>{
-
-        @NonNull
-        @Override
-        public FruitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view =LayoutInflater.from(parent.getContext()).
-                 inflate(android.R.layout.simple_list_item_1,parent,false);
-          return new FruitViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull FruitViewHolder fruitholder, int poistion) {
-          fruitholder.nameText2.setText(fruits.get(poistion));
-        }
-
-        @Override
-        public int getItemCount() {
-            return fruits.size();
-        }
-    }
-
-    class FruitViewHolder extends RecyclerView.ViewHolder {
-        TextView nameText2;
-    public FruitViewHolder(@NonNull View itemView) {
-        super(itemView);
-        nameText2=itemView.findViewById(R.id.text1);
-    }
-}
+//    class FruitAdapter extends RecyclerView.Adapter<FruitViewHolder>{
+//
+//        @NonNull
+//        @Override
+//        public FruitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//            View view =LayoutInflater.from(parent.getContext()).
+//                 inflate(android.R.layout.simple_list_item_1,parent,false);
+//          return new FruitViewHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(@NonNull FruitViewHolder fruitholder, int poistion) {
+//          fruitholder.nameText2.setText(fruits.get(poistion));
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return fruits.size();
+//        }
+//    }
+//
+//    class FruitViewHolder extends RecyclerView.ViewHolder {
+//        TextView nameText2;
+//    public FruitViewHolder(@NonNull View itemView) {
+//        super(itemView);
+//        nameText2=itemView.findViewById(R.id.text1);
+//    }
+//}
 
     // ctrl+o
     @Override
