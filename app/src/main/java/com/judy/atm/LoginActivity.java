@@ -1,5 +1,6 @@
 package com.judy.atm;
 
+import android.content.ContentValues;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,13 @@ public class LoginActivity extends BaseActivity {
         String u =getSharedPreferences("Atm",MODE_PRIVATE)
                 .getString("USERID","");
         edUserid.setText(u);
+        MyDBHelper helper =new MyDBHelper(this,"expenseab",null,1);
+        ContentValues contentValues =new ContentValues();
+        contentValues.put("date","2019-1-8");
+        contentValues.put("info","Parking");
+        contentValues.put("amount",50);
+        helper.getWritableDatabase().insert("exp",null,contentValues);
+
     }
     public void login(View view){
         EditText edUserid = findViewById(R.id.userid);
