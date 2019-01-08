@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class MainActivity extends BaseActivity {
 
     private static final int RC_LOGIN = 70;
     boolean logon = false;
-    List<String> fruits = Arrays.asList("香蕉","鳳梨","芭樂");
+    String[] fruits = {"香蕉","鳳梨","芭樂"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,35 +52,35 @@ public class MainActivity extends BaseActivity {
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
     }
-//    class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHolder> {
-//
-//        @NonNull
-//        @Override
-//        public FruitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//            View view = LayoutInflater.from(parent.getContext())
-//                    .inflate(android.R.layout.simple_list_item_1, parent, false);
-//            return new FruitViewHolder(view);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(@NonNull FruitViewHolder holder, int position) {
-//            holder.nameText.setText(fruits.get(position));
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return fruits.size();
-//        }
-//
-//        class FruitViewHolder extends RecyclerView.ViewHolder {
-//            TextView nameText;
-//
-//            public FruitViewHolder(View itemView) {
-//                super(itemView);
-//                nameText = itemView.findViewById(R.id.text1);
-//            }
-//        }
-//    }
+    class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHolder> {
+
+        @NonNull
+        @Override
+        public FruitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(android.R.layout.simple_list_item_1, parent, false);
+            return new FruitViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull FruitViewHolder holder, int position) {
+            holder.nameText.setText(fruits[position]+" ");
+        }
+
+        @Override
+        public int getItemCount() {
+            return fruits.length;
+        }
+
+        class FruitViewHolder extends RecyclerView.ViewHolder {
+            TextView nameText;
+
+            public FruitViewHolder(View itemView) {
+                super(itemView);
+                nameText = itemView.findViewById(R.id.nickname);
+            }
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

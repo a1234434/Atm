@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class AgeActivity extends BaseActivity {
     int[] numbers = {19, 20, 21, 22, 23, 24, 25};
-
+    private EditText edage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +24,16 @@ public class AgeActivity extends BaseActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new AgeAdapter());
+        AgeAdapter adapter =new AgeAdapter();
+        recyclerView.setAdapter(adapter);
+        edage =findViewById(R.id.ed_age);
     }
 
     public void next(View view) {
-        EditText age = findViewById(R.id.ed_age);
-        int a = Integer.parseInt(age.getText().toString());
-        getSharedPreferences("user",MODE_PRIVATE).edit()
-                .putInt("age",a).apply();
+//        EditText age = findViewById(R.id.ed_age);
+        int a = Integer.parseInt(edage.getText().toString());
+//        getSharedPreferences("user",MODE_PRIVATE).edit()
+//                .putInt("age",a).apply();
         user.setAge(a);
         Intent gender = new Intent(this, GenderActivity.class);
         startActivity(gender);
@@ -52,19 +54,20 @@ public class AgeActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(@NonNull AgeAdapter.AgeViewHolder holder, final int position) {
         holder.ageText.setText(numbers[position]+" ");
-        if(numbers[position]==19){
+        if(numbers[position]==20){
             holder.ageText.setTextColor(Color.RED);
         }
-        holder.ageText.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("AgeActivity","Onclick"+numbers[position]);
-
+                edage.setText(numbers[position]+" ");
             }
         });
     }
         @Override
         public int getItemCount() {
+
             return numbers.length;
         }
 
